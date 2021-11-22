@@ -3,10 +3,28 @@ import numpy as np
 
 
 def refactor_pixels(pixels, i, j, step, pixel_size):
+    """
+    изменение значение пикселей в для создания отдельном блоке моззайки в монохромного ч/б блока
+    :param pixels:
+    :param i:
+    :param j:
+    :param step:
+    :param pixel_size:
+    :return:
+    """
     middle_brightness = int(int(np.sum(pixels[i:i + pixel_size, j:j + pixel_size])) // 3 // (pixel_size ** 2))
     pixels[i: i + pixel_size, j: j + pixel_size] = int(middle_brightness // step) * step
 
 def pixelation(pixels, step, pixel_size):
+    """
+    Нарезка массива значений пикселей на блоки моззаики и последующее их изменение
+    :param pixels:
+    :param step:
+    :param pixel_size:
+    :return:
+
+    >>>pixelation()
+    """
     width = len(pixels)
     height = len(pixels[1])
     pixels = pixels[:width // pixel_size * pixel_size, :height // pixel_size * pixel_size]
